@@ -1,0 +1,80 @@
+'''
+Continuing with the previous scenario, a student eligible for admission has to choose a course and pay the fees for it. If they have scored more than 85 marks in qualifying exam, they get 25% discount on fees.
+
+
+Valid course ids and fees are given below:
+
+course id	fees
+1001	25575.0
+1002	15500.0
+
+Instance variables and methods to be included in Student class are given below.
+
+
+Class name: Student
+
+Attributes
+(private)	
+course_id
+fees
+
+Methods
+(public)	__init__()	Create and initialize newly created instance variables also to None
+choose_course(course_id)	Accept the course_id chosen by the student.
+If course_id is valid,
+set attributes course_id and fees
+if marks is more than 85, apply 25% discount on fees
+return true
+Else, return false
+getter methods	Include getter methods for newly added instance variables
+'''
+
+#OOP-Assgn-10
+
+class Flower:
+    def __init__(self):
+        self.__flower_name = None
+        self.__price_per_kg = None
+        self.__stock_available = None
+        
+    def set_flower_name(self, flower_name):
+        self.__flower_name = flower_name.lower()
+    def set_price_per_kg(self, price_per_kg):
+        self.__price_per_kg = price_per_kg
+    def set_stock_available(self, stock_available):
+        self.__stock_available = stock_available
+        
+    def get_flower_name(self):
+        return self.__flower_name
+    def get_price_per_kg(self):
+        return self.__price_per_kg
+    def get_stock_available(self):
+        return self.__stock_available
+        
+    def validate_flower(self):
+        flower_names = ['orchid', 'rose', 'jasmine']
+        if self.__flower_name.lower() in flower_names:
+            return True
+        else:
+            return False
+        
+    def validate_stock(self, required_quantity):
+        flower_names = ['orchid', 'rose', 'jasmine']
+        if self.__flower_name.lower() in flower_names and required_quantity <= self.__stock_available:
+            return True
+        else:
+            return False
+        
+    def sell_flower(self, required_quantity):
+        if self.validate_flower() and self.validate_stock(required_quantity):
+            self.__stock_available -= required_quantity
+            
+    def check_level(self):
+        if self.__stock_available < 15 and self.__flower_name == "orchid":
+            return True
+        elif self.__stock_available < 25 and self.__flower_name == "rose":
+            return True
+        elif self.__stock_available < 40 and self.__flower_name == "jasmine":
+            return True
+        else:
+            return False
